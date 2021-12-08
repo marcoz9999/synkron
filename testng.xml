@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="CreateTestngXml" verbose="1">
+	<test name="Create TestNG XML">
+		<classes>
+			<class name="testUtilities.TestRunner" />
+		</classes>
+	</test>
+</suite>
