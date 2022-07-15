@@ -1,5 +1,7 @@
 package testUtilities;
 
+import static testUtilities.Constants.testSuiteName;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,10 +12,8 @@ import org.testng.xml.XmlTest;
 
 import com.aventstack.extentreports.ExtentReports;
 
-import static testUtilities.Constants.*;
-
 public class TestRunner {
-	
+
 	public static ExtentReports report;
 
 	public static void main(String[] args) {
@@ -21,11 +21,11 @@ public class TestRunner {
 		createTestngXml();
 		closeExtentReport();
 	}
-	
+
 	public static void initializeExtentReports() {
 		report = Drex.initializeReport();
 	}
-	
+
 	public static void closeExtentReport() {
 		report.flush();
 	}

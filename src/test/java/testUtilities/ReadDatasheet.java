@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
@@ -106,10 +105,10 @@ public interface ReadDatasheet {
 				connection.close();
 
 			} catch (FilloException e1) {
-				
+
 			}
-	        
-		    
+
+
 		}
 		return result;
 	}

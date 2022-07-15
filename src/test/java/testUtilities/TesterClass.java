@@ -20,7 +20,7 @@ import com.codoid.products.fillo.Fillo;
 import com.codoid.products.fillo.Recordset;
 
 public class TesterClass {
-	
+
 
 	public static void main(String[] args) {
 		readTxtFile();
@@ -28,23 +28,23 @@ public class TesterClass {
 
 	public static void setSliderValue() {
 		ChromeOptions options = new ChromeOptions();
-		
+
 		options.addArguments("--start-maximized");
 		System.setProperty("webdriver.chrome.driver", chromedriverFilePath);
 
 		WebDriver driver = new ChromeDriver(options);
 		WebDriverWait wait = new WebDriverWait(driver, 20);
 
-		
+
 		driver.get("https://crossbrowsertesting.github.io/drag-and-drop");
-		
+
 		Drex.waitForPageToLoad(wait);
-		
+
 		Drex.setKeyInLocalStorage(driver, "defaultLanguage", "en");
-		
+
 		WebElement from = driver.findElement(By.id("draggable"));
 		WebElement to = driver.findElement(By.id("droppable"));
-		
+
 		Actions actions = new Actions(driver);
 		actions.moveToElement(from)
 				.clickAndHold()
@@ -81,7 +81,7 @@ public class TesterClass {
 
 		return testCases;
 	}
-	
+
 	public static void readTxtFile()
 	{
 		String someString = "0006332000741807	PCTS	TEST1";

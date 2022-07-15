@@ -200,7 +200,7 @@ public interface Drex {
 		test.log(Status.INFO, logText);
 		test.info(MediaEntityBuilder.createScreenCaptureFromPath(Drex.logScreenshot(driver)).build());
 	}
-	
+
 	static void logWindowScreenshot(String logText, ExtentTest test) {
 		test.log(Status.INFO, logText);
 		test.info(MediaEntityBuilder.createScreenCaptureFromPath(Drex.logWindowScreenshot()).build());
@@ -349,7 +349,7 @@ public interface Drex {
 		robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
 		Thread.sleep(2000);
 		test.log(Status.INFO, "Dragging " + sourceName + " element and dropping to " + targetName + " position...");
-		
+
 		robot.mouseMove(600, 10);
 		robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
 		robot.delay(200);
@@ -597,7 +597,7 @@ public interface Drex {
 		Drex.selectAllAndDeleteWithSendKeys(xpath, driver);
 		Drex.hitKeys(xpath, Keys.TAB, driver);
 		if (driver.findElement(By.xpath(errorMessage)).getText().contains("empty")
-				|| driver.findElement(By.xpath(errorMessage)).getText().contains("vacío")) {
+				|| driver.findElement(By.xpath(errorMessage)).getText().contains("vacï¿½o")) {
 			return true;
 		} else {
 			return false;

@@ -2,7 +2,23 @@ package businessLogic;
 
 
 
-import static pageObjects.PO_Page.*;
+import static pageObjects.PO_Page.assignmentSearch;
+import static pageObjects.PO_Page.calendarDay;
+import static pageObjects.PO_Page.close;
+import static pageObjects.PO_Page.columns;
+import static pageObjects.PO_Page.confDropBox;
+import static pageObjects.PO_Page.cropPhotoSlider;
+import static pageObjects.PO_Page.dismiss;
+import static pageObjects.PO_Page.goBack;
+import static pageObjects.PO_Page.logout;
+import static pageObjects.PO_Page.nextMonth;
+import static pageObjects.PO_Page.pictureIcon;
+import static pageObjects.PO_Page.profileIcon;
+import static pageObjects.PO_Page.publishedContentClose;
+import static pageObjects.PO_Page.save;
+import static pageObjects.PO_Page.saveImage;
+import static pageObjects.PO_Page.userSearchResults;
+
 import java.awt.AWTException;
 import java.util.List;
 import java.util.Map;
@@ -87,17 +103,17 @@ public class BL_Page {
 
 		String todayXpath = String.format(calendarDay, Drex.formatTodayToSpecificPattern(tcId));
 
-		if (Drex.verifyAttribute(todayXpath, "aria-selected", "true", wait, driver, test) == true) {
+		if (Drex.verifyAttribute(todayXpath, "aria-selected", "true", wait, driver, test)) {
 			Drex.report(driver, "\"Today\" is automatically selected (and enabled)", Status.PASS, test);
 			Drex.verifyIfElementExistAndReport(todayXpath, "Today", wait, driver, test);
-		} else if (expectedValue == false) {
+		} else if (!expectedValue) {
 			Drex.verifyIfElementExistAndReport(todayXpath, "Today is enabled for selection", wait, driver, test);
 		} else {
 			Drex.report(driver, "\"Today\" is not selected (not enabled)", Status.FAIL, test);
 		}
 
 		if (Drex.verifyAttribute(todayXpath + "/preceding-sibling::div[1]", "aria-disabled", "true", wait, driver,
-				test) == true) {
+				test)) {
 			// Drex.report(driver, "Prior than today is disabled for selection as
 			// expected.", Status.PASS, test);
 			Drex.verifyIfElementExistAndReport(todayXpath + "/preceding-sibling::div[1]",
@@ -108,11 +124,11 @@ public class BL_Page {
 		String todayPlusSixMonths = Drex.addMonthsToCurrentDateAndFormatToSpecificPattern(tcId);
 		String todayPlusSixMonthsXpath = String.format(calendarDay, todayPlusSixMonths);
 
-		while (Drex.verifyIfElementExistAndReturnBoolean(todayPlusSixMonthsXpath, driver) != true) {
+		while (!Drex.verifyIfElementExistAndReturnBoolean(todayPlusSixMonthsXpath, driver)) {
 			Drex.click(nextMonth, "Next Month", driver, test);
 			Drex.waitForPageToLoad(wait);
-			if (Drex.verifyIfElementExistAndReturnBoolean(todayPlusSixMonthsXpath, driver) == true) {
-				if (Drex.verifyAttribute(todayPlusSixMonthsXpath, "aria-disabled", "false", wait, driver, test) == true)
+			if (Drex.verifyIfElementExistAndReturnBoolean(todayPlusSixMonthsXpath, driver)) {
+				if (Drex.verifyAttribute(todayPlusSixMonthsXpath, "aria-disabled", "false", wait, driver, test))
 					Drex.verifyIfElementExistAndReport(todayPlusSixMonthsXpath,
 							"Today + 6 months is enabled for selection and ", wait, driver, test);
 			}
@@ -141,7 +157,7 @@ public class BL_Page {
 		//Drex.dragAndDropByOffsetWithActions(cropPhotoImgContainer,ReadDatasheet.get("OffsetY", tcId), driver);
 		Drex.logInfoScreenshot("Dragged Image in Crop Photo component", test, driver);
 		Drex.click(saveImage, "Save image", driver, test);
-		Drex.waitForPageToLoad(wait); 
+		Drex.waitForPageToLoad(wait);
 	}
 	public void addImageToCrop() throws NumberFormatException, InterruptedException {
 		Drex.click(confDropBox, "Drag your image here or browse image", driver, test);
@@ -152,7 +168,7 @@ public class BL_Page {
 		}
 		Drex.logInfoScreenshot("Picked test photo to add to Course Image", test, driver);
 	}
-	
+
 	public void addImageToCertificate() throws NumberFormatException, InterruptedException {
 		try {
 			Drex.selectFileWithRobot(ReadDatasheet.get("InputFilePath", tcId));
@@ -161,7 +177,7 @@ public class BL_Page {
 		}
 		Drex.logInfoScreenshot("Picked test photo to add to Certificate Template", test, driver);
 	}
-	
+
 	public void dropImageToContent() throws NumberFormatException, InterruptedException {
 		Drex.click(confDropBox, "Drag your image here or browse image", driver, test);
 		try {
@@ -212,7 +228,7 @@ public class BL_Page {
 	public void clickOnColumns() {
 		click(columns, "Columns");
 	}
-	
+
 	public void closeSnackbar() {
 		Drex.click(dismiss,"Snackbar" , driver, test);
 	}

@@ -7,14 +7,15 @@ package pageObjects;
  *
  */
 public class PO_Page {
-
+	
+	//Example
 	public static final String nextStep = "//button[contains(.,'Next Step') or contains(.,'Siguiente Paso') or contains(.,'Siguiente paso')]";
 	public static final String browseImage = "//div[contains(@class,'imageDropzone-dropzone')]//*[text()=' browse image' or text()=' busca tu imagen']";
 	public static final String assignmentSearch = "//input[@placeholder='Search' or @placeholder='Buscar']";
 	public static final String userSearchResults = "//input[@placeholder='Search']/../following-sibling::ul/li";
 	public static final String calendarDay = "//div[@aria-label='%s']";
 	public static final String publishedContentClose = "//button/p[text()='Close' or text()='Cerrar']";
-	public static final String logout = "//p[text()='Log Out' or text()='Cerrar Sesión']";
+	public static final String logout = "//p[text()='Log Out' or text()='Cerrar Sesiï¿½n']";
 	public static final String profileIcon = "//img[contains(@alt, 'Profile') and contains (@alt, 'icon')]";
 	public static final String nextMonth = "//*[@aria-label='Next Month']";
 	public static final String confDropBox = "//div[contains(@class,'imageDropzone-dropzone')]//*[text()=' browse image' or text()=' busca tu imagen']";
@@ -26,4 +27,8 @@ public class PO_Page {
 	public static final String columns = "//div[contains(@class,'js-columnSelector')]/button";
 	public static final String pictureIcon = "//*[name()='svg' and contains(@class,'js-pictureIcon')]";
 	public static final String dismiss = "//p[text()='Dismiss']";
+	
+	
+
+	
 }

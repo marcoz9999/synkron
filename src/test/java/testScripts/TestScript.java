@@ -1,5 +1,10 @@
 package testScripts;
 
+import static testUtilities.Constants.chromedriverFilePath;
+import static testUtilities.TestRunner.report;
+
+import java.util.Map;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -11,17 +16,12 @@ import com.aventstack.extentreports.ExtentTest;
 import testUtilities.Drex;
 import testUtilities.ReadDatasheet;
 
-import java.util.Map;
-
-import static testUtilities.TestRunner.*;
-import static testUtilities.Constants.*;
-
 /**
  * @author Ksquare
  *
  */
 public abstract class TestScript {
-	
+
 	public WebDriver driver;
 	public String tcId;
 	public ExtentTest test;
@@ -40,12 +40,12 @@ public abstract class TestScript {
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--start-maximized");
 		options.addArguments("--disable-infobars");
-		
+
 		driver = new ChromeDriver(options);
 		tcId = this.getClass().getSimpleName();
 		String url = ReadDatasheet.get("BaseUrl", tcId);
 		driver.get(url);
-		
+
 		Drex.setKeyInLocalStorage(driver, "defaultLanguage", ReadDatasheet.get("defaultLanguage", tcId));
 
 		test = Drex.initializeTest(report, tcId);

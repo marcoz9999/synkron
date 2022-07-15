@@ -1,5 +1,12 @@
 package businessLogic;
 
+import static pageObjects.PO_LoginPage.loginButton;
+import static pageObjects.PO_LoginPage.password;
+import static pageObjects.PO_LoginPage.signInPhrase;
+import static pageObjects.PO_LoginPage.username;
+
+import java.util.Map;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -9,10 +16,6 @@ import com.aventstack.extentreports.ExtentTest;
 
 import testUtilities.Drex;
 import testUtilities.ReadDatasheet;
-
-import java.util.Map;
-
-import static pageObjects.PO_LoginPage.*;
 
 /**
  * @author Ksquare
@@ -50,7 +53,7 @@ public class BL_LoginPage extends BL_Page {
 			Drex.logFailScreenshot("Sign In Phrase is empty", test, driver);
 
 	}
-	
+
 	public void verifyMandatoryFields() throws InterruptedException {
 		Drex.logInfo(ReadDatasheet.get("Description", tcId), test);
 		Drex.waitForPageToLoad(wait);
@@ -60,7 +63,7 @@ public class BL_LoginPage extends BL_Page {
 				driver.findElement(By.xpath(username)).getAttribute("placeholder")
 						.concat(" \"cannot be empty\" message"),
 				wait, driver, test);
-		
+
 		Drex.hitKeys(password, Keys.TAB, driver);
 		Drex.verifyIfElementExistAndReport(password,
 				driver.findElement(By.xpath(password)).getAttribute("placeholder")
@@ -69,14 +72,14 @@ public class BL_LoginPage extends BL_Page {
 		Drex.scrollIntoViewWithJsExec(loginButton, driver);
 		if(!Drex.verifyIfElementIsEnabled(loginButton, driver))
 		Drex.logPassScreenshot("Login button disabled", test, driver);
-		else 
+		else
 		Drex.logFailScreenshot("Login button enabled", test, driver);
 		Thread.sleep(2000);
 		Drex.clearAndInputText(username, "Username", ReadDatasheet.get("Username", tcId), driver, test);
 		Drex.clearAndInputText(password, "Password", ReadDatasheet.get("Password", tcId), driver, test);
 		if(Drex.verifyIfElementIsEnabled(loginButton, driver))
 			Drex.logPassScreenshot("Login button enabled", test, driver);
-		else 
+		else
 			Drex.logFailScreenshot("Login button disabled", test, driver);
 
 	}

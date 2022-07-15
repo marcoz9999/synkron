@@ -23,7 +23,7 @@ public class TestMethodsAndSolutions implements Comparator<String> {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-	
+
 	static void scrollHorizontally()
 	{
 		try {
@@ -32,7 +32,7 @@ public class TestMethodsAndSolutions implements Comparator<String> {
 			int source_x = 700;
 			int source_y = 290;
 			int target_x = 1000;
-			
+
 			robot.mouseMove(source_x, source_y);
 			robot.delay(2000);
 			robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
